@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Smashistics</string>
+    <string-array name="chars">
+        <item>Bayonetta</item>
+        <item>Bowser</item>
+        <item>Bowser Jr.</item>
+        <item>Captain Falcon</item>
+        <item>Charizard</item>
+        <item>Cloud</item>
+        <item>Corrin</item>
+        <item>Dark Pit</item>
+        <item>Diddy Kong</item>
+        <item>Donkey Kong</item>
+        <item>Dr. Mario</item>
+        <item>Duck Hunt</item>
+        <item>Falco</item>
+        <item>Fox</item>
+        <item>Ganondorf</item>
+        <item>Greninja</item>
+        <item>Ike</item>
+        <item>Jigglypuff</item>
+        <item>King Dedede</item>
+        <item>Kirby</item>
+        <item>Link</item>
+        <item>Little Mac</item>
+        <item>Lucario</item>
+        <item>Lucas</item>
+        <item>Lucina</item>
+        <item>Luigi</item>
+        <item>Mario</item>
+        <item>Marth</item>
+        <item>Mega Man</item>
+        <item>Meta Knight</item>
+        <item>Mewtwo</item>
+        <item>Mii Brawler</item>
+        <item>Mii Gunner</item>
+        <item>Mii Swordfighter</item>
+        <item>Mr. Game &amp; Watch</item>
+        <item>Ness</item>
+        <item>Olimar</item>
+        <item>Pac-Man</item>
+        <item>Palutena</item>
+        <item>Peach</item>
+        <item>Pikachu</item>
+        <item>Pit</item>
+        <item>R.O.B</item>
+        <item>Robin</item>
+        <item>Rosalina &amp; Luma</item>
+        <item>Roy</item>
+        <item>Ryu</item>
+        <item>Samus</item>
+        <item>Sheik</item>
+        <item>Shulk</item>
+        <item>Sonic</item>
+        <item>Toon Link</item>
+        <item>Villager</item>
+        <item>Wario</item>
+        <item>Wii Fit Trainer</item>
+        <item>Yoshi</item>
+        <item>Zelda</item>
+        <item>Zero Suit Samus</item>
+    </string-array>
+</resources>
