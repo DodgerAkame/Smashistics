@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="none"
@@ -17,7 +17,7 @@
         android:id="@+id/user_char_anon_spinner"
         android:entries="@array/chars"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -30,4 +30,32 @@
         android:layout_height="wrap_content"
         android:id="@+id/opponent_char_anon_spinner"
         android:entries="@array/chars"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/anon_matchResult">
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/win"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loss"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+    <Button
+        android:text="Validate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/anon_validate" />
+
 </LinearLayout>
