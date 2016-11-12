@@ -61,14 +61,14 @@ public class AddAnonymousActivity extends AppCompatActivity {
     public void onValid(View v) {
         int resultId = radioGroup.getCheckedRadioButtonId();
         result = (RadioButton) findViewById(resultId);
-        user = userchar.getSelectedItem().toString();//*************
-        opp = oppchar.getSelectedItem().toString();//*************
+        user = userchar.getSelectedItem().toString();
+        opp = oppchar.getSelectedItem().toString();
 
         System.out.println(result.toString());
         System.out.println(user);
         System.out.println(opp);
 
-
+        //TODO Instancier MatchModel, puis faire un Intent pour envoyer les résultats dans le MainActivity
 
 
     }

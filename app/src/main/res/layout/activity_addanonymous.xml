@@ -35,17 +35,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/anon_matchResult">
+        android:id="@+id/anon_matchResult"
+        android:checkedButton="@+id/win">
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="Win"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/win"
             android:layout_weight="1" />
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="Loss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/loss"
