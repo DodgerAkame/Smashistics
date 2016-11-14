@@ -3,4 +3,80 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:text="Your Character"
+        android:ems="10"
+        android:id="@+id/user_char" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_charspinner"
+        android:entries="@array/chars"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Your opponent's name"
+        android:ems="10"
+        android:id="@+id/oppNickname" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Your opponent's Character"
+        android:ems="10"
+        android:id="@+id/oppopent_char" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/opponent_char_spinner"
+        android:entries="@array/chars"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/matchResult"
+        android:checkedButton="@+id/win">
+
+        <RadioButton
+            android:text="Win"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/win"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="Loss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loss"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:text="Validate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/anon_validate" />
+
 </LinearLayout>

@@ -1,11 +1,16 @@
 package simon.remy.smashistics;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * Created by dodger on 31/10/16.
@@ -39,4 +44,27 @@ public class AddActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_ANONYMOUS && resultCode == RESULT_OK){
+            MatchModel mm = data.getParcelableExtra("match");
+            Toast.makeText(this, "Match successfully saved", Toast.LENGTH_SHORT).show();
+            Intent intent = getIntent();
+            intent.putExtra("match", mm);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+
+        if (requestCode == ADD_FRIEND && resultCode == RESULT_OK){
+            MatchModel mm = data.getParcelableExtra("match");
+            Toast.makeText(this, "Match successfully saved", Toast.LENGTH_SHORT).show();
+            Intent intent = getIntent();
+            intent.putExtra("match", mm);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+    }
+
 }

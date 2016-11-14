@@ -9,9 +9,13 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private final static int ADD_RESULT = 1;
+    private final static int LIST_RESULT = 4;
+    private ResultModel rm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        rm = new ResultModel();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -24,10 +28,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //TODO Continuer ici
+        Button listButton = (Button) findViewById(R.id.list);
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_RESULT && resultCode == RESULT_OK){
+            MatchModel mm = data.getParcelableExtra("match");
+            rm.addResult(mm);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package simon.remy.smashistics;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -50,27 +52,29 @@ public class AddAnonymousActivity extends AppCompatActivity {
             }
         });
 
-        userchar = (Spinner) findViewById(R.id.user_char_anon_spinner);
-        oppchar = (Spinner) findViewById(R.id.opponent_char_anon_spinner);
-        radioGroup = (RadioGroup) findViewById(R.id.anon_matchResult);
+        userchar = (Spinner) findViewById(R.id.user_charspinner);
+        oppchar = (Spinner) findViewById(R.id.opponent_char_spinner);
+        radioGroup = (RadioGroup) findViewById(R.id.matchResult);
         win = (RadioButton) findViewById(R.id.win);
         loss = (RadioButton) findViewById(R.id.loss);
 
     }
 
     public void onValid(View v) {
+        Boolean hasWon = false;
         int resultId = radioGroup.getCheckedRadioButtonId();
-        result = (RadioButton) findViewById(resultId);
+        RadioButton radioButton = (RadioButton) findViewById(resultId);
         user = userchar.getSelectedItem().toString();
         opp = oppchar.getSelectedItem().toString();
 
-        System.out.println(result.toString());
-        System.out.println(user);
-        System.out.println(opp);
-
         //TODO Instancier MatchModel, puis faire un Intent pour envoyer les résultats dans le MainActivity
+        if (radioButton.getText().equals("Win")) hasWon = true;
+        MatchModel currentMatch = new MatchModel(user,"anonymous",opp,hasWon);
 
-
+        Intent intent = getIntent();
+        intent.putExtra("match", currentMatch);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override
@@ -78,4 +82,6 @@ public class AddAnonymousActivity extends AppCompatActivity {
         setResult(RESULT_CANCELED);
         finish();
     }
+
+    //TODO fenêtre de validation
 }
