@@ -1,5 +1,11 @@
 package simon.remy.smashistics;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.view.View;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +17,7 @@ import java.util.List;
 public class ResultModel {
 
     private List<MatchModel> result = new ArrayList<MatchModel>();
+    private Paint p;
 
     public ResultModel() {
 
@@ -41,4 +48,6 @@ public class ResultModel {
         }
         return buffer;
     }
+
+
 }
