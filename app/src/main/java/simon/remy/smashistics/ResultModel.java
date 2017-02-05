@@ -49,5 +49,12 @@ public class ResultModel {
         return buffer;
     }
 
+    public void populate(){
+        for (int i = 0; i < 500; i++){
+            double rdn = Math.random();
+            Boolean hasWOn = (rdn > 0.35);
+            result.add(new MatchModel("mario","anonymous","luigi",hasWOn));
+        }
+    }
 
 }

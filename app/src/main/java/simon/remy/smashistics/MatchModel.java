@@ -82,4 +82,8 @@ public class MatchModel implements Parcelable {
         }
     };
 
+    @Override
+    public String toString() {
+        return "Opponent : " + oppNickname +"\nMatch : " +userChar+" vs "+ oppChar +"\nResult : "+(hasWon?"Won":"Loss");
+    }
 }

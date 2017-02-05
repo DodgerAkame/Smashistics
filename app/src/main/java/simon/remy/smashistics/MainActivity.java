@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         rm = new ResultModel();
+        rm.populate();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button listButton = (Button) findViewById(R.id.list);
-        listButton.setOnClickListener(new View.OnClickListener() {
+       Button listButton = (Button) findViewById(R.id.list);
+       /* listButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
@@ -48,7 +49,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
+        });*/
+
+        listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
         });
+
 
     }
 

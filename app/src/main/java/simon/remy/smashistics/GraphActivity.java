@@ -10,8 +10,10 @@ import android.os.Parcelable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -27,6 +29,7 @@ public class GraphActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private Paint p;
     private ResultModel rm;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,20 +39,21 @@ public class GraphActivity extends AppCompatActivity {
         //TODO récupérer données
         rm = new ResultModel();
         Intent data = getIntent();
-        //int size = Integer.getInteger(data.getParcelableArrayExtra("list_size")[0].toString()); //getting size
+
         int size = data.getIntExtra("list_size", 0);
         for (int i = 0; i < size; i++){
             StringTokenizer st = new StringTokenizer(data.getStringArrayExtra("match")[i].toString(),";");
             String userChar = st.nextToken();
             String opp = st.nextToken();
             String oppChar = st.nextToken();
-            boolean hasWon = Boolean.getBoolean(st.nextToken());
+            Boolean hasWon = (st.nextToken().equals("true"));
+
 
             rm.getResult().add(new MatchModel(userChar,opp,oppChar,hasWon));
         }
 
         hsv = (HorizontalScrollView) findViewById(R.id.canvas);
-        //hsv = new HorizontalScrollView(getApplicationContext());
+
 
         hsv.post(new Runnable() {
             @Override
@@ -65,8 +69,13 @@ public class GraphActivity extends AppCompatActivity {
 
         GraphView graphView = new GraphView(getApplicationContext());
         graphView.setP(p);
+        graphView.setRm(rm);
         hsv.addView(graphView);
         graphView.draw(new Canvas());
+
+        lv = (ListView) findViewById(R.id.table_result);
+        ArrayAdapter ad= new ArrayAdapter<MatchModel>(this,R.layout.listview,rm.getResult());
+        lv.setAdapter(ad);
 
     }
 
