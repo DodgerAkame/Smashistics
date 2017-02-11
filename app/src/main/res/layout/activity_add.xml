@@ -4,13 +4,13 @@
     android:layout_height="match_parent">
 
     <Button
-        android:text="Add a Anonymous Opponent"
+        android:text="@string/add_a_annonymous_opponent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/add_anonymous" />
 
     <Button
-        android:text="Add a Known Opponent"
+        android:text="@string/add_a_known_opponent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/add_friend" />

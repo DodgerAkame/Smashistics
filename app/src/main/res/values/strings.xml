@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Smashistics</string>
+    <string name="global_results">Global results</string>
+    <string name="by_opponent_s_nickname">By opponent\'s nickname</string>
+    <string name="filter_with_your_character">Filter with your character</string>
+    <string name="filter_with_opponent_s_character">Filter with opponent\'s character</string>
+    <string name="filter_with_both_characters">Filter with both characters</string>
+    <string name="add_a_annonymous_opponent">Add a Anonymous Opponent</string>
+    <string name="add_a_known_opponent">Add a Known Opponent</string>
+    <string name="validate">Validate</string>
+    <string name="loss">Loss</string>
+    <string name="win">Win</string>
+    <string name="opp_char">Your opponent\'s Character</string>
+    <string name="user_char">Your Character</string>
+    <string name="opp_name">Your opponent\'s name</string>
     <string-array name="chars">
         <item>Bayonetta</item>
         <item>Bowser</item>

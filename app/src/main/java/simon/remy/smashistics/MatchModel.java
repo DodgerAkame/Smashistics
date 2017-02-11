@@ -3,18 +3,35 @@ package simon.remy.smashistics;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by dodger on 12/11/16.
  */
 
 public class MatchModel implements Parcelable {
 
+    public static final Creator<MatchModel> CREATOR = new Creator<MatchModel>() {
+        @Override
+        public MatchModel createFromParcel(Parcel in) {
+            String userChar = in.readString();
+            String oppNickname = in.readString();
+            String oppChar = in.readString();
+            Boolean hasWon = in.readInt() != 0;
+
+            return new MatchModel(userChar, oppNickname, oppChar, hasWon);
+        }
+
+        @Override
+        public MatchModel[] newArray(int size) {
+            return new MatchModel[size];
+        }
+    };
     private String userChar;
     private String oppChar;
     private String oppNickname;
     private Boolean hasWon;
-
-
 
     public MatchModel(String userChar, String oppNicknamme, String oppChar, Boolean hasWon ) {
         this.oppNickname = oppNicknamme;
@@ -22,6 +39,8 @@ public class MatchModel implements Parcelable {
         this.hasWon = hasWon;
         this.userChar = userChar;
     }
+
+
 
 
     public String getUserChar() {
@@ -64,23 +83,6 @@ public class MatchModel implements Parcelable {
         dest.writeString(oppChar);
         dest.writeInt(hasWon ? 1 : 0);
     }
-
-    public static final Creator<MatchModel> CREATOR = new Creator<MatchModel>() {
-        @Override
-        public MatchModel createFromParcel(Parcel in) {
-            String userChar = in.readString();
-            String oppNickname = in.readString();
-            String oppChar = in.readString();
-            Boolean hasWon = in.readInt() != 0;
-
-            return new MatchModel(userChar, oppNickname, oppChar, hasWon);
-        }
-
-        @Override
-        public MatchModel[] newArray(int size) {
-            return new MatchModel[size];
-        }
-    };
 
     @Override
     public String toString() {

@@ -36,7 +36,6 @@ public class GraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canvas);
 
-        //TODO récupérer données
         rm = new ResultModel();
         Intent data = getIntent();
 
@@ -81,7 +80,6 @@ public class GraphActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        setResult(RESULT_CANCELED);
         finish();
     }
 }

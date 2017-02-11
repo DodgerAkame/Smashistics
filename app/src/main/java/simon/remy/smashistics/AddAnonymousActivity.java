@@ -1,12 +1,16 @@
 package simon.remy.smashistics;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -16,6 +20,9 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by dodger on 31/10/16.
@@ -32,12 +39,10 @@ public class AddAnonymousActivity extends AppCompatActivity {
     private Spinner oppchar;
     private String user;
     private String opp;
+    private DatePicker datePicker;
+    private Calendar date;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,20 +66,51 @@ public class AddAnonymousActivity extends AppCompatActivity {
     }
 
     public void onValid(View v) {
-        Boolean hasWon = false;
-        int resultId = radioGroup.getCheckedRadioButtonId();
-        RadioButton radioButton = (RadioButton) findViewById(resultId);
-        user = userchar.getSelectedItem().toString();
-        opp = oppchar.getSelectedItem().toString();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Validate?")
+                .setMessage("Validate your match?")
+                .setPositiveButton("OK",null)
+                .setNegativeButton("Cancel",null)
+                .create();
 
-        //TODO Instancier MatchModel, puis faire un Intent pour envoyer les résultats dans le MainActivity
-        if (radioButton.getText().equals("Win")) hasWon = true;
-        MatchModel currentMatch = new MatchModel(user,"anonymous",opp,hasWon);
 
-        Intent intent = getIntent();
-        intent.putExtra("match", currentMatch);
-        setResult(RESULT_OK, intent);
-        finish();
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                Button okButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                okButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Boolean hasWon = false;
+                        int resultId = radioGroup.getCheckedRadioButtonId();
+                        RadioButton radioButton = (RadioButton) findViewById(resultId);
+                        user = userchar.getSelectedItem().toString();
+                        opp = oppchar.getSelectedItem().toString();
+
+
+
+                        if (radioButton.getText().equals("Win")) hasWon = true;
+                        MatchModel currentMatch = new MatchModel(user,"anonymous",opp,hasWon);
+
+                        Intent intent = getIntent();
+                        intent.putExtra("match", currentMatch);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+                });
+
+                Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.cancel();
+                    }
+                });
+            }
+        });
+
+        alertDialog.show();
+
     }
 
     @Override
@@ -83,5 +119,4 @@ public class AddAnonymousActivity extends AppCompatActivity {
         finish();
     }
 
-    //TODO fenêtre de validation
 }

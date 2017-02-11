@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="none"
-        android:text="Your Character"
+        android:text="@string/user_char"
         android:ems="10"
         android:id="@+id/user_char" />
 
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Your opponent's name"
+        android:text="@string/opp_name"
         android:ems="10"
         android:id="@+id/oppNickname" />
 
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Your opponent's Character"
+        android:text="@string/opp_char"
         android:ems="10"
         android:id="@+id/oppopent_char" />
 
@@ -55,14 +55,14 @@
         android:checkedButton="@+id/win">
 
         <RadioButton
-            android:text="Win"
+            android:text="@string/win"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/win"
             android:layout_weight="1" />
 
         <RadioButton
-            android:text="Loss"
+            android:text="@string/loss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/loss"
@@ -74,7 +74,7 @@
         android:layout_height="20dp" />
 
     <Button
-        android:text="Validate"
+        android:text="@string/validate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/anon_validate" />

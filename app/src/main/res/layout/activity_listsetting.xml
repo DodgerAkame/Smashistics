@@ -1,59 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:orientation="vertical">
 
     <RadioGroup
-        android:layout_width="204dp"
+        android:layout_width="match_parent"
         android:layout_height="194dp"
-        android:layout_weight="0.21"
+        android:layout_weight="0.8"
         android:id="@+id/settings">
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="@string/global_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButton"
-            android:layout_weight="1" />
+            android:layout_weight="0.1"
+            android:checked="true"
+            android:id="@+id/global_result" />
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="@string/by_opponent_s_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButton2"
-            android:layout_weight="1" />
+            android:id="@+id/oppnick_result"
+            android:layout_weight="0.1" />
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="@string/filter_with_your_character"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButton3"
-            android:layout_weight="1" />
+            android:id="@+id/userchar_result"
+            android:layout_weight="0.1" />
 
         <RadioButton
-            android:text="RadioButton"
-            android:layout_width="wrap_content"
+            android:text="@string/filter_with_opponent_s_character"
+            android:layout_width="281dp"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButton4"
-            android:layout_weight="1" />
+            android:id="@+id/oppchar_result"
+            android:layout_weight="0.1"/>
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="@string/filter_with_both_characters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButton5"
-            android:layout_weight="1" />
+            android:id="@+id/bothchar_result"
+            android:layout_weight="0.1" />
 
     </RadioGroup>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_weight="0.21" />
+        android:id="@+id/oppnick_name"
+        android:layout_weight="0.001"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="0.01">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/opp_name"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_weight="0.1" />
+
+        <Spinner
+            android:layout_height="wrap_content"
+            android:id="@+id/singlechar_result"
+            android:layout_width="match_parent"
+            android:entries="@array/chars"
+            android:layout_weight="0.1"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doublechar_result1"
+            android:entries="@array/chars"
+            android:layout_weight="0.05" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doublechar_result2"
+            android:entries="@array/chars"
+            android:layout_weight="0.05" />
+
+    </LinearLayout>
+
+    <Button
+        android:text="validate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/result_validate"
+        android:layout_weight="0.2"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="bottom"/>
 
 </LinearLayout>
