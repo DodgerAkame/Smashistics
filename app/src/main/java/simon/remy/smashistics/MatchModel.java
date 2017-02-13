@@ -19,8 +19,10 @@ public class MatchModel implements Parcelable {
             String oppNickname = in.readString();
             String oppChar = in.readString();
             Boolean hasWon = in.readInt() != 0;
+            String date = in.readString();
+            String comment = in.readString();
 
-            return new MatchModel(userChar, oppNickname, oppChar, hasWon);
+            return new MatchModel(userChar, oppNickname, oppChar, hasWon,date, comment);
         }
 
         @Override
@@ -28,10 +30,13 @@ public class MatchModel implements Parcelable {
             return new MatchModel[size];
         }
     };
+
     private String userChar;
     private String oppChar;
     private String oppNickname;
     private Boolean hasWon;
+    private String date;
+    private String comment;
 
     public MatchModel(String userChar, String oppNicknamme, String oppChar, Boolean hasWon ) {
         this.oppNickname = oppNicknamme;
@@ -40,8 +45,30 @@ public class MatchModel implements Parcelable {
         this.userChar = userChar;
     }
 
+    public MatchModel(String userChar, String oppNicknamme, String oppChar, Boolean hasWon, String date, String comment){
+        this.oppNickname = oppNicknamme;
+        this.oppChar = oppChar;
+        this.hasWon = hasWon;
+        this.userChar = userChar;
+        this.date = date;
+        this.comment = comment;
+    }
 
+    public String getComment() {
+        return comment;
+    }
 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getUserChar() {
         return userChar;
@@ -82,10 +109,12 @@ public class MatchModel implements Parcelable {
         dest.writeString(oppNickname);
         dest.writeString(oppChar);
         dest.writeInt(hasWon ? 1 : 0);
+        dest.writeString(date);
+        dest.writeString(comment);
     }
 
     @Override
     public String toString() {
-        return "Opponent : " + oppNickname +"\nMatch : " +userChar+" vs "+ oppChar +"\nResult : "+(hasWon?"Won":"Loss");
+        return "Date : " + date+ "\nOpponent : " + oppNickname +"\nMatch : " +userChar+" vs "+ oppChar +"\nResult : "+(hasWon?"Won":"Loss");
     }
 }

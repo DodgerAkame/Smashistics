@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -30,6 +31,7 @@ public class AddFriendActivity extends AppCompatActivity{
     private String opp;
     private EditText oppNickname_edit;
     private String oppNickname;
+    private DatePicker datePicker;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class AddFriendActivity extends AppCompatActivity{
         win = (RadioButton) findViewById(R.id.win);
         loss = (RadioButton) findViewById(R.id.loss);
         oppNickname_edit = (EditText) findViewById(R.id.oppNickname);
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
 
     }
 
@@ -74,9 +77,14 @@ public class AddFriendActivity extends AppCompatActivity{
                         user = userchar.getSelectedItem().toString();
                         opp = oppchar.getSelectedItem().toString();
                         oppNickname = oppNickname_edit.getText().toString();
+                        int year = datePicker.getYear();
+                        int month = datePicker.getMonth()+1;
+                        int day = datePicker.getDayOfMonth();
+
+                        String date = day+"/"+month+"/"+year;
 
                         if (radioButton.getText().equals("Win")) hasWon = true;
-                        MatchModel currentMatch = new MatchModel(user,oppNickname,opp,hasWon);
+                        MatchModel currentMatch = new MatchModel(user,oppNickname,opp,hasWon,date," ");
 
                         Intent intent = getIntent();
                         intent.putExtra("match", currentMatch);

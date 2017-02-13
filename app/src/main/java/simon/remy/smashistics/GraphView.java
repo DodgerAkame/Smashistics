@@ -29,11 +29,17 @@ public class GraphView extends View {
         float total = 0;
         float rate= 0;
 
-
         p.setColor(Color.BLACK);
+
+        canvas.drawText("0%",25,150,p);
+        canvas.drawText("50%",20,85,p);
+        canvas.drawText("100%",10,20,p);
+
+        canvas.translate(35,0);
 
         canvas.drawLine(10, 10, 10, 150, p);
         canvas.drawLine(10, 150, rm.getResult().size()+20, 150, p);
+        canvas.drawText("Ratio de victoire (%)",15, 20,p);
 
         p.setColor(Color.RED);
         canvas.translate(10,150);
@@ -43,6 +49,13 @@ public class GraphView extends View {
             if(mm.getHasWon()) rate++;
 
             canvas.drawPoint(total,-(rate/total)*150,p);
+
+            if ((total % 100) == 0 | total == rm.getResult().size() -1){
+                p.setColor(Color.BLACK);
+                canvas.drawLine(total,5,total,-5,p);
+                canvas.drawText(String.valueOf(total), total-5, 20,p);
+                p.setColor(Color.RED);
+            }
 
         }
 

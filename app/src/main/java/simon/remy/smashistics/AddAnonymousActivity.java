@@ -31,18 +31,12 @@ import java.util.GregorianCalendar;
 public class AddAnonymousActivity extends AppCompatActivity {
 
     private Button valid;
-    private RadioButton win;
-    private RadioButton loss;
-    private RadioButton result;
     private RadioGroup radioGroup;
     private Spinner userchar;
     private Spinner oppchar;
     private String user;
     private String opp;
     private DatePicker datePicker;
-    private Calendar date;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,9 +53,9 @@ public class AddAnonymousActivity extends AppCompatActivity {
 
         userchar = (Spinner) findViewById(R.id.user_charspinner);
         oppchar = (Spinner) findViewById(R.id.opponent_char_spinner);
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
         radioGroup = (RadioGroup) findViewById(R.id.matchResult);
-        win = (RadioButton) findViewById(R.id.win);
-        loss = (RadioButton) findViewById(R.id.loss);
+
 
     }
 
@@ -86,11 +80,14 @@ public class AddAnonymousActivity extends AppCompatActivity {
                         RadioButton radioButton = (RadioButton) findViewById(resultId);
                         user = userchar.getSelectedItem().toString();
                         opp = oppchar.getSelectedItem().toString();
+                        int year = datePicker.getYear();
+                        int month = datePicker.getMonth()+1;
+                        int day = datePicker.getDayOfMonth();
 
-
+                        String date = day+"/"+month+"/"+year;
 
                         if (radioButton.getText().equals("Win")) hasWon = true;
-                        MatchModel currentMatch = new MatchModel(user,"anonymous",opp,hasWon);
+                        MatchModel currentMatch = new MatchModel(user,"anonymous",opp,hasWon,date," ");
 
                         Intent intent = getIntent();
                         intent.putExtra("match", currentMatch);

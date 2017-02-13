@@ -32,6 +32,8 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
     private TextView text;
     private RadioGroup rg;
     private Button validate;
+    final private static int CANCEL_DELETE = 10;
+    final private static int DISPLAY_MATCH = 15;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
                     case R.id.global_result:
                         intent.putExtra("list_size",match.length);
                         intent.putExtra("match", match);
-                        startActivity(intent);
+                        startActivityForResult(intent,DISPLAY_MATCH);
                         break;
                     case R.id.oppnick_result:
                         for (String result : match){
@@ -83,7 +85,7 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
                             intent.putExtra("list_size",buffer.size());
                             String[] yo = buffer.toArray(new String[buffer.size()]);
                             intent.putExtra("match", yo);
-                            startActivity(intent);
+                            startActivityForResult(intent,DISPLAY_MATCH);
                         } else {
                             Toast.makeText(SettingsActivity.this, "No result found", Toast.LENGTH_SHORT).show();
                         }
@@ -99,7 +101,7 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
                                 intent.putExtra("list_size",buffer.size());
                                 String[] yo = buffer.toArray(new String[buffer.size()]);
                                 intent.putExtra("match", yo);
-                                startActivity(intent);
+                                startActivityForResult(intent,DISPLAY_MATCH);
                             } else {
                                 Toast.makeText(SettingsActivity.this, "No result found", Toast.LENGTH_SHORT).show();
                             }
@@ -117,7 +119,7 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
                             intent.putExtra("list_size",buffer.size());
                             String[] yo = buffer.toArray(new String[buffer.size()]);
                             intent.putExtra("match", yo);
-                            startActivity(intent);
+                            startActivityForResult(intent,DISPLAY_MATCH);
                         } else {
                             Toast.makeText(SettingsActivity.this, "No result found", Toast.LENGTH_SHORT).show();
                         }
@@ -135,7 +137,7 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
                             intent.putExtra("list_size",buffer.size());
                             String[] yo = buffer.toArray(new String[buffer.size()]);
                             intent.putExtra("match", yo);
-                            startActivity(intent);
+                            startActivityForResult(intent,DISPLAY_MATCH);
                         } else {
                             Toast.makeText(SettingsActivity.this, "No result found", Toast.LENGTH_SHORT).show();
                         }
@@ -230,5 +232,22 @@ public class SettingsActivity extends Activity implements RadioGroup.OnCheckedCh
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == CANCEL_DELETE && requestCode == DISPLAY_MATCH){
+            int position = data.getIntExtra("position",0);
+            String mode = data.getStringExtra("mode");
+            Intent intent = getIntent();
+            if (mode.equalsIgnoreCase("update")){
+                intent.putExtra("match",data.getParcelableExtra("match"));
+            }
+            intent.putExtra("mode", mode);
+            intent.putExtra("position",position);
+            setResult(CANCEL_DELETE,intent);
+            finish();
+        }
+    }
 }
 

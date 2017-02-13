@@ -62,7 +62,9 @@ public class ResultModel {
             Boolean hasWOn = (rdn > 0.35);
             String char1 = characters[new Random().nextInt(characters.length)];
             String char2 = characters[new Random().nextInt(characters.length)];
-            result.add(new MatchModel(char1,"anonymous",char2,hasWOn));
+            String date = "12/2/2017";
+            String comment = " ";
+            result.add(new MatchModel(char1,"anonymous",char2,hasWOn, date, comment));
         }
     }
 
