@@ -1,15 +1,13 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +15,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import simon.remy.smashistics.R;
+import simon.remy.smashistics.activities.GraphActivities.GraphActivity;
 
 /**
  * Created by dodger on 05/02/17.

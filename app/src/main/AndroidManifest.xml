@@ -8,19 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity"></activity>
-        <activity android:name=".AddAnonymousActivity" />
-        <activity android:name=".AddFriendActivity" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+        <activity android:name=".activities.AddActivities.AddActivity"></activity>
+        <activity android:name=".activities.AddActivities.AddAnonymousActivity" />
+        <activity android:name=".activities.AddActivities.AddFriendActivity" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <activity android:name=".GraphActivity"/>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".activities.GraphActivities.GraphActivity"/>
+        <activity android:name=".activities.SettingsActivity"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

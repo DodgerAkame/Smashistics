@@ -1,16 +1,15 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.activities.AddActivities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.List;
+import simon.remy.smashistics.R;
+import simon.remy.smashistics.model.MatchModel;
 
 /**
  * Created by dodger on 31/10/16.

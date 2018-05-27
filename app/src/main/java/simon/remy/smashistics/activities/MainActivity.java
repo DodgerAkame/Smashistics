@@ -1,9 +1,10 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,19 +13,50 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import simon.remy.smashistics.R;
+import simon.remy.smashistics.activities.AddActivities.AddActivity;
+import simon.remy.smashistics.database.MatchContract;
+import simon.remy.smashistics.database.MatchDbHelper;
+import simon.remy.smashistics.model.MatchModel;
+import simon.remy.smashistics.model.ResultModel;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private final static int ADD_RESULT = 1;
+    ArrayList<MatchModel> last10;
     private ResultModel rm;
     private ListView lv;
-    ArrayList<MatchModel> last10;
+    private  MatchDbHelper dbHelper;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         rm = new ResultModel();
-        rm.populate(getApplicationContext().getResources().getStringArray(R.array.chars));
+        //rm.populate(getApplicationContext().getResources().getStringArray(R.array.chars));
+        dbHelper = new MatchDbHelper(getApplicationContext());
+        db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                MatchContract.MatchEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        while(cursor.moveToNext()){
+
+            String userChar = cursor.getString(cursor.getColumnIndexOrThrow(MatchContract.MatchEntry.COLUMN_USER_CHARA));
+            String oppChar = cursor.getString(cursor.getColumnIndexOrThrow(MatchContract.MatchEntry.COLUMN_OPP_CHARA));
+            String oppNick = cursor.getString(cursor.getColumnIndexOrThrow(MatchContract.MatchEntry.COLUMN_OPP_NICK));
+            boolean hasWon = cursor.getInt(cursor.getColumnIndexOrThrow(MatchContract.MatchEntry.COLUMN_HAS_WON)) == 1;
+
+            rm.getResult().add(new MatchModel(userChar, oppNick, oppChar, hasWon));
+        }
 
         last10 = new ArrayList<MatchModel>();
 
@@ -59,8 +91,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        for (int i = rm.getResult().size()- 1; i  > rm.getResult().size()- 11; i--)
-            last10.add(rm.getResult().get(i));
+       int i = rm.getResult().size() - 1;
+       while(i >= 0) {
+           last10.add(rm.getResult().get(i));
+           i--;
+       }
         lv = (ListView) findViewById(R.id.table_result);
         ArrayAdapter ad= new ArrayAdapter<MatchModel>(this,R.layout.listview,last10);
         lv.setAdapter(ad);
@@ -73,9 +108,21 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == ADD_RESULT && resultCode == RESULT_OK){
             MatchModel mm = data.getParcelableExtra("match");
             rm.addResult(mm);
+
+            db = dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(MatchContract.MatchEntry.COLUMN_USER_CHARA, mm.getUserChar());
+            values.put(MatchContract.MatchEntry.COLUMN_OPP_NICK, mm.getOppNickname());
+            values.put(MatchContract.MatchEntry.COLUMN_OPP_CHARA, mm.getOppChar());
+            values.put(MatchContract.MatchEntry.COLUMN_HAS_WON, mm.getHasWon() ? 1 : 0);
+            db.insert(MatchContract.MatchEntry.TABLE_NAME, null, values);
+
             last10.clear();
-            for (int i = rm.getResult().size()- 1; i  > rm.getResult().size()- 11; i--)
+            int i = rm.getResult().size() - 1;
+            while(i > -1) {
                 last10.add(rm.getResult().get(i));
+                i--;
+            }
             ArrayAdapter ad= new ArrayAdapter<MatchModel>(this,R.layout.listview,last10);
             lv.setAdapter(ad);
         }

@@ -1,11 +1,13 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.activities.GraphActivities;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.DisplayMetrics;
 import android.view.View;
+
+import simon.remy.smashistics.model.MatchModel;
+import simon.remy.smashistics.model.ResultModel;
 
 /**
  * Created by dodger on 31/01/17.

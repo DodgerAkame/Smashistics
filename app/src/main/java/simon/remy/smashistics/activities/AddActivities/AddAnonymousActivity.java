@@ -1,28 +1,22 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.activities.AddActivities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+
+import simon.remy.smashistics.R;
+import simon.remy.smashistics.model.MatchModel;
 
 /**
  * Created by dodger on 31/10/16.
@@ -86,8 +80,6 @@ public class AddAnonymousActivity extends AppCompatActivity {
                         RadioButton radioButton = (RadioButton) findViewById(resultId);
                         user = userchar.getSelectedItem().toString();
                         opp = oppchar.getSelectedItem().toString();
-
-
 
                         if (radioButton.getText().equals("Win")) hasWon = true;
                         MatchModel currentMatch = new MatchModel(user,"anonymous",opp,hasWon);

@@ -1,10 +1,7 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by dodger on 12/11/16.

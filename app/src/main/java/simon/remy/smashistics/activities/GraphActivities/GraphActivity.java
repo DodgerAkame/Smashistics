@@ -1,23 +1,20 @@
-package simon.remy.smashistics;
+package simon.remy.smashistics.activities.GraphActivities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
 import java.util.StringTokenizer;
+
+import simon.remy.smashistics.R;
+import simon.remy.smashistics.model.MatchModel;
+import simon.remy.smashistics.model.ResultModel;
 
 /**
  * Created by dodger on 31/01/17.
