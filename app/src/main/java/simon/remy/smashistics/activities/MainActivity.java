@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         rm = new ResultModel();
-        //rm.populate(getApplicationContext().getResources().getStringArray(R.array.chars));
         dbHelper = new MatchDbHelper(getApplicationContext());
         db = dbHelper.getReadableDatabase();
 
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             values.put(MatchContract.MatchEntry.COLUMN_OPP_CHARA, mm.getOppChar());
             values.put(MatchContract.MatchEntry.COLUMN_HAS_WON, mm.getHasWon() ? 1 : 0);
             db.insert(MatchContract.MatchEntry.TABLE_NAME, null, values);
+            db.close();
 
             last10.clear();
             int i = rm.getResult().size() - 1;

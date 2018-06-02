@@ -25,8 +25,11 @@ public class MatchModel implements Parcelable {
             return new MatchModel[size];
         }
     };
+
+    private int id;
     private String userChar;
     private String oppChar;
+    private int idOpp;
     private String oppNickname;
     private Boolean hasWon;
 

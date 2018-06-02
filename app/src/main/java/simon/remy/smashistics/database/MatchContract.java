@@ -11,6 +11,7 @@ public final class MatchContract {
         public static final String COLUMN_USER_CHARA = "Your_Character";
         public static final String COLUMN_OPP_CHARA = "Opponnent_Character";
         public static final String COLUMN_OPP_NICK = "Opponent_Nickname";
+        public static final String COLUMN_OPP_ID = "Opponent_Id";
         public static final String COLUMN_HAS_WON = "Win";
     }
 
